@@ -16,3 +16,9 @@ function getTriviaQuestion() {
     }, 1000);
   });
 }
+
+function displayQuestion(triviaQuestion) {
+    questionDiv.textContent = `${triviaQuestion.question}`;
+    answerDiv.value = '';
+    feedbackDiv.textContent = '';
+}
