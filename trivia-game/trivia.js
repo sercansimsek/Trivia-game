@@ -1,6 +1,7 @@
 const questionDiv = document.querySelector("#question");
 const answerDiv = document.querySelector("#answer");
 const feedbackDiv = document.querySelector("#feedback");
+const newQuestionBtn = document.querySelector("#questionBtn");
 let currentQuestion = null;
 
 function getTriviaQuestion() {
@@ -18,7 +19,18 @@ function getTriviaQuestion() {
 }
 
 function displayQuestion(triviaQuestion) {
-    questionDiv.textContent = `${triviaQuestion.question}`;
-    answerDiv.value = '';
-    feedbackDiv.textContent = '';
+  questionDiv.textContent = `${triviaQuestion.question}`;
+  answerDiv.value = "";
+  feedbackDiv.textContent = "";
 }
+
+newQuestionBtn.addEventListener("click", () => {
+  getTriviaQuestion()
+    .then((question) => {
+      currentQuestion = question;
+      displayQuestion(question);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
